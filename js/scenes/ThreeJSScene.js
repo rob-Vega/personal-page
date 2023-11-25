@@ -23,7 +23,6 @@ export default class ThreeJSScene {
     this.manager = new THREE.LoadingManager();
     this.progressBar = document.querySelector("#progress-bar");
     this.manager.onProgress = (url, loaded, total) => {
-      console.log(url);
       this.progressBar.value = (loaded / total) * 100;
     };
     this.progressBarContainer = document.querySelector(
@@ -31,6 +30,7 @@ export default class ThreeJSScene {
     );
     this.content = document.getElementById("content");
     this.manager.onLoad = () => {
+      this.isLoaded = true;
       this.progressBarContainer.style.display = "none";
       this.content.style.display = "block";
     };
@@ -65,11 +65,11 @@ export default class ThreeJSScene {
       "models/fatYoshi.stl",
       (geometry) => {
         this.fatYoshi = new THREE.Mesh(
-          geometry,
+          geometry.center(),
           new THREE.MeshStandardMaterial({ color: 0xffffff })
         );
-        this.fatYoshi.scale.set(0.06, 0.06, 0.06);
-        this.fatYoshi.position.set(3, 5, -20);
+        this.fatYoshi.scale.set(0.1, 0.1, 0.1);
+        this.fatYoshi.position.set(6, 10, -20);
         this.fatYoshi.rotation.y = -0.5;
         this.scene.add(this.fatYoshi);
       },
@@ -120,6 +120,8 @@ export default class ThreeJSScene {
       box.rotation.x += randFloat(0.001, 0.005);
       box.rotation.y += randFloat(0.001, 0.005);
     });
+
+    if (this.isLoaded) this.fatYoshi.rotation.y -= 0.005;
 
     this.renderer.render(this.scene, this.camera);
   }
