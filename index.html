@@ -21,7 +21,10 @@
   </head>
   <body class="dark-mode">
     <canvas id="webgl"></canvas>
-    <div id="loading-screen"><i class="spinner fa-solid fa-spinner"></i></div>
+    <div class="progress-bar-container">
+      <label for="progress-bar">Cargando...</label>
+      <progress id="progress-bar" value="0" max="100"></progress>
+    </div>
     <div id="content" style="display: none">
       <div class="dark-mode-container">
         <i id="dark-mode" class="fa-solid fa-sun"></i>

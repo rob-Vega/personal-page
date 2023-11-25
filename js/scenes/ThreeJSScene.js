@@ -21,10 +21,17 @@ export default class ThreeJSScene {
     document.body.appendChild(this.renderer.domElement);
 
     this.manager = new THREE.LoadingManager();
-    this.loadingScreen = document.getElementById("loading-screen");
+    this.progressBar = document.querySelector("#progress-bar");
+    this.manager.onProgress = (url, loaded, total) => {
+      console.log(url);
+      this.progressBar.value = (loaded / total) * 100;
+    };
+    this.progressBarContainer = document.querySelector(
+      ".progress-bar-container"
+    );
     this.content = document.getElementById("content");
     this.manager.onLoad = () => {
-      this.loadingScreen.style.display = "none";
+      this.progressBarContainer.style.display = "none";
       this.content.style.display = "block";
     };
 

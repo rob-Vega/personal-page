@@ -16,31 +16,25 @@ body {
   color: var(--primary);
 }
 
-#loading-screen {
+.progress-bar-container {
   position: absolute;
   left: 50%;
   top: 50%;
+  transform: translate(-50%, -50%);
   background-color: white;
   width: 100%;
   height: 100%;
-  transform: translate(-50%, -50%);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 48px;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.spinner {
-  animation: spin 1s infinite;
+#progress-bar {
+  width: 40%;
+  margin-top: 20px;
+  height: 2%;
+  border: 1px solid black;
 }
 
 #webgl {
@@ -124,6 +118,6 @@ a {
   background-color: var(--primary);
 }
 
-.dark-mode #loading-screen {
+.dark-mode .progress-bar-container {
   background-color: black;
 }
