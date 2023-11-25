@@ -1,0 +1,129 @@
+:root {
+  --primary: rgba(5, 5, 5, 0.8);
+  --white: rgba(255, 255, 255, 0.8);
+  --max-width: 1024px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Code Pro", monospace;
+  background-color: var(--white);
+  color: var(--primary);
+}
+
+#loading-screen {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s infinite;
+}
+
+#webgl {
+  z-index: -1;
+}
+
+.dark-mode-container {
+  display: flex;
+  justify-content: end;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+#dark-mode {
+  margin: 20px 20px 0 0;
+  cursor: pointer;
+  font-size: 26px;
+}
+
+#content {
+  padding-inline: 20px;
+}
+
+header {
+  max-width: var(--max-width);
+  margin: 100px auto;
+}
+
+.gradient > * {
+  width: fit-content;
+  background-color: var(--primary);
+  color: var(--white);
+  padding-inline: 10px;
+}
+
+h1 {
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 38px;
+}
+
+h1 strong {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+main section {
+  padding: 20px;
+  background-color: var(--white);
+  margin-bottom: 20px;
+}
+
+main section p {
+  margin-bottom: 20px;
+}
+
+main section i {
+  font-size: 24px;
+  margin: 10px 5px;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+.dark-mode {
+  background-color: black;
+  color: var(--white);
+}
+
+.dark-mode section {
+  background-color: var(--primary);
+}
+
+.dark-mode #loading-screen {
+  background-color: black;
+}
